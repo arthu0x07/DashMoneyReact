@@ -9,6 +9,7 @@ export default createGlobalStyle`
 
     :root{
         --blue: #5429CC;
+        --lightblue: #6933FF;
         --green: #33CC95;
         --red: #E62E4D;
         --titulos: #363F5F;
@@ -19,10 +20,19 @@ export default createGlobalStyle`
 
     html{
         font-size: 62.5%;
+        font-family: 'Poppins', sans-serif;
 
         @media (max-width: 1024px) {
             font-size: 60%;
         }
     }
 
-`
+    body{
+        background-color: var(--background);
+
+        button{
+            font-family: 'Poppins';
+        }
+    }
+
+`;

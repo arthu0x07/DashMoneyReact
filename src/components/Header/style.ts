@@ -19,12 +19,13 @@ export const Content = styled.section`
     justify-content: space-between;
 
     button{
+        font-size: 1.6rem;
         cursor: pointer;
-        padding: 1rem 2.6rem;
+        padding: 1.5rem 3rem;
         border-radius: 0.2rem;
         border: 0;
-        background-color: var(--blue);
-        filter: brightness(130%);
+        background-color: var(--lightblue);
         color: #ffffff;
+        font-weight: 400;
     }
 `;
