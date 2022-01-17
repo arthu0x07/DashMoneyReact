@@ -1,12 +1,14 @@
 import { Header } from "./components/Header";
-import { Main } from "./components/Main";
+import { Sumary } from "./components/Sumary";
+import { TransactionTable } from "./components/TransactionsTable";
 import GlobalStyle from "./styles/global";
 
 export default function App() {
   return (
     <>
       <Header />
-      <Main />
+      <Sumary />
+      <TransactionTable />
       <GlobalStyle />
     </>
   );
