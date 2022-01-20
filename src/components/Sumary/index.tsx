@@ -25,7 +25,7 @@ export function Sumary() {
 
         <section>
           <div>
-            <h2>Entradas</h2>
+            <h2>Total</h2>
             <img src={SimboloCifrao} alt="Simbolo do Cifrão" />
           </div>
           <strong>R$ 12.300,00</strong>

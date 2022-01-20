@@ -1,15 +1,5 @@
-import { Header } from "./components/Header";
-import { Sumary } from "./components/Sumary";
-import { TransactionTable } from "./components/TransactionsTable";
-import GlobalStyle from "./styles/global";
+import { Home } from "./pages/Home";
 
 export default function App() {
-  return (
-    <>
-      <Header />
-      <Sumary />
-      <TransactionTable />
-      <GlobalStyle />
-    </>
-  );
+  return <Home />;
 }

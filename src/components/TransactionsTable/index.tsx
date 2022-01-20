@@ -1,6 +1,14 @@
+import { useEffect } from "react";
+import { api } from "../../services/api";
 import { Conteiner } from "./style";
 
 export function TransactionTable() {
+  useEffect(() => {
+    api.get("/transactions").then((response) => {
+      console.log(response.data);
+    });
+  }, []);
+
   return (
     <Conteiner>
       <table>
@@ -14,7 +22,7 @@ export function TransactionTable() {
         </thead>
 
         {/* Os valores receberam sua cor com uma condicional, alterando se for de ganho ou de gasto, no style usaremos uma expressão ternária para atribuir sua cor*/}
-
+        {/* Lembrando, a aplicação ainda vai ser componentizada... */}
         <tbody>
           <tr>
             <td className="title">Desenvolvimento de website</td>
