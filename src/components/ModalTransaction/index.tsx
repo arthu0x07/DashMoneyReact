@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState, FormEvent } from "react";
+import { api } from "../../services/api";
 import Modal from "react-modal";
 import LogoIconeVerdin from "../../assets/income.svg";
 import LogoIconeVermelho from "../../assets/outcome.svg";
@@ -9,14 +10,29 @@ interface ModalTransactionProps {
   CloseModal: () => void;
 }
 
+Modal.setAppElement("#root");
+
 export function ModalTransaction({
   isOpen,
   CloseModal,
 }: ModalTransactionProps) {
-  const [type, setType] =
-    useState(
-      "deposit"
-    ); /* Será utilizado para definir o tipo, vou usar isto para diferenciar o botão que está ativo. */
+  const [type, setType] = useState<string>("deposit");
+  const [title, setTitle] = useState<string>();
+  const [value, setValue] = useState<number>();
+  const [category, setCategory] = useState<string>();
+
+  function handleCreateNewTransaction(event: FormEvent) {
+    event.preventDefault();
+
+    const data = {
+      type,
+      title,
+      value,
+      category,
+    };
+
+    api.post("/transactions", data);
+  }
 
   return (
     <Modal
@@ -27,13 +43,26 @@ export function ModalTransaction({
     >
       <Titulo>Cadastrar tarefas</Titulo>
 
-      <Forms>
-        <input type="text" placeholder="Titulo" />
-        <input type="number" placeholder="Valor" />
+      <Forms onSubmit={handleCreateNewTransaction}>
+        <input
+          type="text"
+          placeholder="Titulo"
+          onChange={(event) => {
+            setTitle(event.target.value);
+          }}
+        />
+        <input
+          type="number"
+          placeholder="Valor"
+          onChange={(event) => {
+            setValue(Number(event.target.value));
+          }}
+        />
 
         <ConteinerBotoes>
           <RadioButtons
-            onClick={() => {
+            onClick={(event) => {
+              event.preventDefault();
               setType("deposit");
             }}
             Status={type == "deposit"}
@@ -43,7 +72,8 @@ export function ModalTransaction({
             <h3>Entrada</h3>
           </RadioButtons>
           <RadioButtons
-            onClick={() => {
+            onClick={(event) => {
+              event.preventDefault();
               setType("withdraw");
             }}
             Status={type == "withdraw"}
@@ -54,7 +84,13 @@ export function ModalTransaction({
           </RadioButtons>
         </ConteinerBotoes>
 
-        <input type="text" placeholder="Categoria" />
+        <input
+          type="text"
+          placeholder="Categoria"
+          onChange={(event) => {
+            setCategory(event.target.value);
+          }}
+        />
         <button>Cadastrar</button>
       </Forms>
     </Modal>

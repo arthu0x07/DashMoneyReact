@@ -26,8 +26,12 @@ export const Conteiner = styled.section`
       border-radius: 0.25rem;
     }
 
-    & .title{
-      color: var(--titulos);
+    .deposit {
+      color: #33cc95;
+    }
+
+    .withdraw {
+      color: #e52e4d;
     }
   }
 `;
